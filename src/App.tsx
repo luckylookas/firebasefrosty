@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useFirebase} from "./hooks/useFirebase";
+import {Login} from "./components/login";
+import {Search} from "./components/search/search";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {performLogin, ready, search, searchResults} = useFirebase()
+
+return <div className='w-screen h-screen'>
+    {!ready && <Login performLogin={performLogin} /> }
+    {ready && <div className='form'>
+       <Search search={(term) => search(term, 1)} results={searchResults} />
+    </div> }
+
+</div>
 }
 
 export default App;
