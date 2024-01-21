@@ -1,11 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap');
 
 *{
+    font-family: 'Comfortaa', sans-serif;
     @apply rounded;
     @apply transition-all;
     @apply bg-dark;
     @apply text-text;
+    @apply align-middle;
     outline: none;
 }
